@@ -1,15 +1,14 @@
 import * as http from 'http';
-import config from 'config';
+import { Pool } from 'pg';
+
+const pool = new Pool();
 
 http
-  .createServer(function (req, res) {
-    res.write('Hello World!');
+  .createServer(async function (req, res) {
+    const data = await pool.query('SELECT NOW()');
+    res.write(data.rows);
     res.end();
   })
   .listen(9090);
 
 console.log('Server started on port 9090, Happy Hacking!');
-
-console.log(`Default variable: ${config.get('test.defaultVariableThatCanBeOverriden')}`);
-
-console.log(`Development only: ${config.get('test.developmentOnlyVariable')}`);

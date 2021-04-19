@@ -19,6 +19,13 @@ FROM node:fermium-slim
 WORKDIR /app
 ENV NODE_ENV=production
 
+# Default env vars
+ENV PGUSER=dbuser
+ENV PGHOST=database.server.com
+ENV PGPASSWORD=secretpassword
+ENV PGDATABASE=mydb
+ENV PGPORT=5432
+
 COPY config ./config
 COPY package*.json ./
 RUN npm ci --quiet --only=production

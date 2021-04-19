@@ -12,6 +12,15 @@ After creating your repo, you can hack the project in your own way. I recommend 
 - `npm build`: build the project
 - `npm lint`: lint all files
 
-Note: executing the project from inside VSCode will automatically attach the debugger for node. Thus, you can use the breakpoints to help debugging your code.
+## command to startup
 
-Happy hacking =)
+- `npm run build`
+
+```bash
+ PGUSER=dbuser \
+  PGHOST=database.server.com \
+  PGPASSWORD=secretpassword \
+  PGDATABASE=mydb \
+  PGPORT=3211 \
+  node dist/src/index.js
+```
